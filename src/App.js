@@ -1,22 +1,17 @@
-import logo from './logo.svg';
+
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          You are in focus mode window ALT+TAB and CTRL+ALT+DEL will Close your exam.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <p>
+
+      Also ALT+F4 is disabled
+      </p>
       </header>
     </div>
   );

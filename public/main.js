@@ -24,6 +24,7 @@ app.on('ready', ()=>{
     })
   
     
+    createWindow()
     if(check)
     createWindow()
     else
@@ -45,6 +46,12 @@ app.on('browser-window-focus',()=>{
 function createWindow() {
   mainWindow = new BrowserWindow({width: 900, height: 680, fullscreen:true, focusable:true});
   mainWindow.loadURL(isDev ? 'http://localhost:3000' : `file://${path.join(__dirname, '../build/index.html')}`);
+  mainWindow.on('close', (e) => {
+    // Do your control here
+    
+        e.preventDefault();
+  
+  })
   mainWindow.on('closed', () => mainWindow = null);
 }
 
@@ -53,6 +60,7 @@ app.whenReady().then(() => {
   let ret = globalShortcut.register('ALT+TAB', () => {
     console.log('CommandOrControl+X is pressed')
   })
+  
 
   if (!ret) {
     console.log('registration failed')
