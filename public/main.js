@@ -1,6 +1,9 @@
 const electron = require('electron');
 const { app, globalShortcut } = require('electron')
 const BrowserWindow = electron.BrowserWindow;
+const tasklist = require('win-tasklist');
+
+var check = true;
 
 
 
@@ -11,7 +14,24 @@ const isDev = require('electron-is-dev');
 let mainWindow;
 app.on('ready', ()=>{
 
-  createWindow()});
+  tasklist().then((list)=>{
+  
+    Object.entries(list).forEach(item=>{
+      let name = item[1].process
+      if(name=='Discord.exe')
+      console.log(name)
+      check = false;
+    })
+  
+    
+    if(check)
+    createWindow()
+    else
+    console.log("sssssnoooo")
+  }).catch((err)=>{
+    console.error(err);
+  });
+  });
 
 app.on('browser-window-blur',()=>{
   console.log("ssssS")
